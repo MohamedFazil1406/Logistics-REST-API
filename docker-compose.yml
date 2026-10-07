@@ -1,0 +1,40 @@
+services:
+  mysql-db:
+    image: mysql:8
+    container_name: mysql-db
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: logistics
+    volumes:
+      - mysql-data:/var/lib/mysql
+    ports:
+      - "3307:3306"
+    networks:
+      - logistics-network
+    healthcheck:
+      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost", "-proot" ]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  logistics-app:
+    build: .
+    container_name: logistics-app
+    ports:
+      - "1919:1919"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql-db:3306/logistics
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root
+    depends_on:
+       mysql-db:
+         condition: service_healthy
+
+    networks:
+      - logistics-network
+
+networks:
+  logistics-network:
+
+volumes:
+  mysql-data:
