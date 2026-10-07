@@ -1,4 +1,4 @@
-# RSM Pack and Drop — Logistics REST API
+# Pack and Drop — Logistics REST API
 
 A backend REST API for a pickup-and-delivery logistics service, built with Java, Spring Boot, Spring Data JPA, and MySQL.
 
