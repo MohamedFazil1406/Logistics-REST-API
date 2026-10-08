@@ -27,3 +27,7 @@
         restart_policy: always
         ports:
           - "1919:1919"
+        env:
+          SPRING_DATASOURCE_URL: "jdbc:mysql://YOUR_RDS_ENDPOINT:3306/logistics"
+          SPRING_DATASOURCE_USERNAME: "admin"
+          SPRING_DATASOURCE_PASSWORD: "root12345"
