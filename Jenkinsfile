@@ -13,6 +13,7 @@ pipeline {
                 bat 'docker --version'
                 bat 'docker compose version'
             }
+        }
 
         stage('Build App') {
             steps {
