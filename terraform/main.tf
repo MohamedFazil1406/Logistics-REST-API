@@ -20,3 +20,11 @@ resource "aws_db_instance" "logistics_db" {
 
   skip_final_snapshot = true
 }
+
+resource "aws_s3_bucket" "logistics_bucket" {
+  bucket = "logistics-app-storage-unique-name"
+
+  tags = {
+    Name = "logistics-storage"
+  }
+}
