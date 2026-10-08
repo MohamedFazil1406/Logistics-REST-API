@@ -8,6 +8,12 @@ pipeline {
             }
         }
 
+        stage('Check Docker') {
+            steps {
+                bat 'docker --version'
+                bat 'docker compose version'
+            }
+
         stage('Build App') {
             steps {
                 bat 'mvn clean package -DskipTests'
