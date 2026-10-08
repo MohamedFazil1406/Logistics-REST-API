@@ -23,13 +23,13 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                bat 'docker compose build'
+                bat 'docker-compose build'
             }
         }
 
         stage('Deploy') {
             steps {
-                bat 'docker compose up -d'
+                bat 'docker-compose up -d'
             }
         }
     }
